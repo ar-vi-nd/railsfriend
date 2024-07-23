@@ -1,0 +1,51 @@
+<div class="container">
+  <%# <p style="color: green"><%= notice %></p>
+
+  <% if (user_signed_in?)%> 
+
+  <h1>Friends</h1>
+
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-info">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Twitter</th>
+        <th>UserID</th>
+        <th>Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @friends.each do |friend| %>
+      <% if(friend.user==current_user)%>
+        <tr id="<%= dom_id friend %>">
+          <td><%= link_to  friend.first_name+" "+friend.last_name,friend %></td>
+          <td><%= friend.email %></td>
+          <td><%= friend.phone %></td>
+          <td><%= friend.twitter %></td>
+          <td><%= friend.user_id %></td>
+
+          <td>
+            
+              <%# <%= link_to "Show", friend, class: "btn btn-primary d-inline" %>
+              <%# <%= link_to "Edit", edit_friend_path(friend), class: "btn btn-success d-inline ms-2" %> 
+              <%= button_to "Delete", friend, method: :delete, class: "btn btn-danger d-inline ms-2", data: { confirm: "Are you sure?" , turbo_confirm: "Are you sure?" } %>
+            
+          </td>
+        </tr>
+      <%end%>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New friend", new_friend_path, class: "btn btn-success" %>
+
+
+  <%else%>
+  <h1>Hello Guest</h1>
+  <p>Please login to use this app</p>
+
+  <%end%>
+</div>

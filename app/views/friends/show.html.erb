@@ -1,0 +1,46 @@
+<%# <p style="color: green"><%= notice %></p> 
+
+<%# <%= render @friend %> 
+
+
+
+
+
+<div class="card">
+  <div class="card-header">
+    <h1>Friend Details</h1>
+  </div>
+  <div class="card-body">
+     <p>
+    <strong>First name:</strong>
+    <%= @friend.first_name %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= @friend.last_name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @friend.email %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @friend.phone %>
+  </p>
+
+  <p>
+    <strong>Twitter:</strong>
+    <%= @friend.twitter %>
+  </p>
+
+  <div class="btn-group" role="group" aria-label="Actions">
+  <%= link_to "Back to friends", friends_path, class:"btn btn-primary"%>
+
+  <%= link_to "Edit", edit_friend_path(@friend), class: "btn btn-success d-inline ms-2" %>
+              <%= button_to "Delete", @friend, method: :delete, class: "btn btn-danger d-inline ms-2", data: { confirm: "Are you sure?" , turbo_confirm: "Are you sure?" } %>
+</div>
+  </div>
+</div>
